@@ -9,7 +9,10 @@ class WPvivid_tools
     public static function clean_junk_cache(){
         $home_url_prefix=get_home_url();
         $parse = parse_url($home_url_prefix);
-        $tmppath=str_replace('/','_',$parse['path']);
+        $tmppath='';
+        if(isset($parse['path'])) {
+            $tmppath=str_replace('/','_',$parse['path']);
+        }
         $home_url_prefix = $parse['host'].$tmppath;
         $path = WP_CONTENT_DIR.DIRECTORY_SEPARATOR.WPvivid_Setting::get_backupdir();
         $handler=opendir($path);

@@ -133,6 +133,39 @@ class WPvivid_Restore_DB_WPDB_Method_2
 
     public function execute_sql($query)
     {
+        if(preg_match('#SET TIME_ZONE=@OLD_TIME_ZONE#', $query))
+        {
+            return true;
+        }
+        if(preg_match('#SET SQL_MODE=@OLD_SQL_MODE#', $query))
+        {
+            return true;
+        }
+        if(preg_match('#SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS#', $query))
+        {
+            return true;
+        }
+        if(preg_match('#SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS#', $query))
+        {
+            return true;
+        }
+        if(preg_match('#SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT#', $query))
+        {
+            return true;
+        }
+        if(preg_match('#SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS#', $query))
+        {
+            return true;
+        }
+        if(preg_match('#SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION#', $query))
+        {
+            return true;
+        }
+        if(preg_match('#SET SQL_NOTES=@OLD_SQL_NOTES#', $query))
+        {
+            return true;
+        }
+
         global $wpdb;
         if ($wpdb->get_results($query)===false)
         {

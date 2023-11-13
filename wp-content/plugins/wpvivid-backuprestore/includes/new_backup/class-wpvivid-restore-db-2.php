@@ -974,8 +974,15 @@ class WPvivid_Restore_DB_2
             $new_table_name=$current_old_table;
         }
 
+        if($this->old_prefix !== '')
+        {
+            $query=str_replace($table_name,$new_table_name,$query);
+        }
+        else
+        {
+            $query=preg_replace('/'.$table_name.'/',$new_table_name,$query, 1);
+        }
 
-        $query=str_replace($table_name,$new_table_name,$query);
         $table_name=$new_table_name;
 
         if(apply_filters('wpvivid_restore_db_skip_create_tables',false,$table_name,$sub_task['options']))
@@ -1243,7 +1250,15 @@ class WPvivid_Restore_DB_2
             {
                 $new_table_name=$table_name;
             }
-            $query=str_replace($table_name,$new_table_name,$query);
+
+            if($this->old_prefix !== '')
+            {
+                $query=str_replace($table_name,$new_table_name,$query);
+            }
+            else
+            {
+                $query=preg_replace('/'.$table_name.'/',$new_table_name,$query, 1);
+            }
         }
 
         if($this->execute_sql($query,$sub_task)===false)
@@ -1326,11 +1341,71 @@ class WPvivid_Restore_DB_2
         {
             if($this->old_prefix!=$this->new_prefix)
             {
-                $update_query ='UPDATE '.$table_name.' SET meta_key=REPLACE(meta_key,"'.$this->old_prefix.'","'.$this->new_prefix.'") WHERE meta_key LIKE "'.str_replace('_','\_',$this->old_prefix).'%";';
-
-                if($this->execute_sql($update_query,$sub_task)===false)
+                if($this->old_prefix!=='')
                 {
-                    $this->log->WriteLog($this->db_method->get_last_error(),'notice');
+                    $update_query ='UPDATE '.$table_name.' SET meta_key=REPLACE(meta_key,"'.$this->old_prefix.'","'.$this->new_prefix.'") WHERE meta_key LIKE "'.str_replace('_','\_',$this->old_prefix).'%";';
+
+                    if($this->execute_sql($update_query,$sub_task)===false)
+                    {
+                        $this->log->WriteLog($this->db_method->get_last_error(),'notice');
+                    }
+                }
+                else
+                {
+                    if(is_multisite())
+                    {
+                        $select_query='SELECT * FROM '.$table_name.' WHERE meta_key LIKE "%_capabilities%";';
+                        $results = $wpdb->get_results($select_query,ARRAY_A);
+                        foreach ($results as $item)
+                        {
+                            $update_query='UPDATE '.$table_name.' SET meta_key=\''.$this->new_prefix.$item['meta_key'].'\' WHERE meta_key=\''.$item['meta_key'].'\';';
+                            if($this->execute_sql($update_query,$sub_task)===false)
+                            {
+                                $this->log->WriteLog($this->db_method->get_last_error(),'notice');
+                            }
+                        }
+
+                        $select_query='SELECT * FROM '.$table_name.' WHERE meta_key LIKE "%_user_level%";';
+                        $results = $wpdb->get_results($select_query,ARRAY_A);
+                        foreach ($results as $item)
+                        {
+                            $update_query='UPDATE '.$table_name.' SET meta_key=\''.$this->new_prefix.$item['meta_key'].'\' WHERE meta_key=\''.$item['meta_key'].'\';';
+                            if($this->execute_sql($update_query,$sub_task)===false)
+                            {
+                                $this->log->WriteLog($this->db_method->get_last_error(),'notice');
+                            }
+                        }
+                    }
+
+                    $update_query = 'UPDATE ' . $table_name . ' SET meta_key="' . $this->new_prefix . 'capabilities" WHERE meta_key="' . $this->old_prefix . 'capabilities";';
+                    if ($this->execute_sql($update_query, $sub_task) === false)
+                    {
+                        $this->log->WriteLog($this->db_method->get_last_error(), 'notice');
+                    }
+
+                    $update_query = 'UPDATE ' . $table_name . ' SET meta_key="' . $this->new_prefix . 'user_level" WHERE meta_key="' . $this->old_prefix . 'user_level";';
+                    if ($this->execute_sql($update_query, $sub_task) === false)
+                    {
+                        $this->log->WriteLog($this->db_method->get_last_error(), 'notice');
+                    }
+
+                    $update_query = 'UPDATE ' . $table_name . ' SET meta_key="' . $this->new_prefix . 'user-settings" WHERE meta_key="' . $this->old_prefix . 'user-settings";';
+                    if ($this->execute_sql($update_query, $sub_task) === false)
+                    {
+                        $this->log->WriteLog($this->db_method->get_last_error(), 'notice');
+                    }
+
+                    $update_query = 'UPDATE ' . $table_name . ' SET meta_key="' . $this->new_prefix . 'user-settings-time" WHERE meta_key="' . $this->old_prefix . 'user-settings-time";';
+                    if ($this->execute_sql($update_query, $sub_task) === false)
+                    {
+                        $this->log->WriteLog($this->db_method->get_last_error(), 'notice');
+                    }
+
+                    $update_query = 'UPDATE ' . $table_name . ' SET meta_key="' . $this->new_prefix . 'dashboard_quick_press_last_post_id" WHERE meta_key="' . $this->old_prefix . 'dashboard_quick_press_last_post_id";';
+                    if ($this->execute_sql($update_query, $sub_task) === false)
+                    {
+                        $this->log->WriteLog($this->db_method->get_last_error(), 'notice');
+                    }
                 }
                 $ret['result']='success';
                 $ret['replace_row']=0;
@@ -1343,11 +1418,71 @@ class WPvivid_Restore_DB_2
         {
             if($this->old_base_prefix!=$this->new_prefix)
             {
-                $update_query ='UPDATE '.$table_name.' SET meta_key=REPLACE(meta_key,"'.$this->old_base_prefix.'","'.$this->new_prefix.'") WHERE meta_key LIKE "'.str_replace('_','\_',$this->old_base_prefix).'%";';
-
-                if($this->execute_sql($update_query,$sub_task)===false)
+                if($this->old_base_prefix!=='')
                 {
-                    $this->log->WriteLog($this->db_method->get_last_error(),'notice');
+                    $update_query ='UPDATE '.$table_name.' SET meta_key=REPLACE(meta_key,"'.$this->old_base_prefix.'","'.$this->new_prefix.'") WHERE meta_key LIKE "'.str_replace('_','\_',$this->old_base_prefix).'%";';
+
+                    if($this->execute_sql($update_query,$sub_task)===false)
+                    {
+                        $this->log->WriteLog($this->db_method->get_last_error(),'notice');
+                    }
+                }
+                else
+                {
+                    if(is_multisite())
+                    {
+                        $select_query='SELECT * FROM '.$table_name.' WHERE meta_key LIKE "%_capabilities%";';
+                        $results = $wpdb->get_results($select_query,ARRAY_A);
+                        foreach ($results as $item)
+                        {
+                            $update_query='UPDATE '.$table_name.' SET meta_key=\''.$this->new_prefix.$item['meta_key'].'\' WHERE meta_key=\''.$item['meta_key'].'\';';
+                            if($this->execute_sql($update_query,$sub_task)===false)
+                            {
+                                $this->log->WriteLog($this->db_method->get_last_error(),'notice');
+                            }
+                        }
+
+                        $select_query='SELECT * FROM '.$table_name.' WHERE meta_key LIKE "%_user_level%";';
+                        $results = $wpdb->get_results($select_query,ARRAY_A);
+                        foreach ($results as $item)
+                        {
+                            $update_query='UPDATE '.$table_name.' SET meta_key=\''.$this->new_prefix.$item['meta_key'].'\' WHERE meta_key=\''.$item['meta_key'].'\';';
+                            if($this->execute_sql($update_query,$sub_task)===false)
+                            {
+                                $this->log->WriteLog($this->db_method->get_last_error(),'notice');
+                            }
+                        }
+                    }
+
+                    $update_query = 'UPDATE ' . $table_name . ' SET meta_key="' . $this->new_prefix . 'capabilities" WHERE meta_key="' . $this->old_base_prefix . 'capabilities";';
+                    if ($this->execute_sql($update_query, $sub_task) === false)
+                    {
+                        $this->log->WriteLog($this->db_method->get_last_error(), 'notice');
+                    }
+
+                    $update_query = 'UPDATE ' . $table_name . ' SET meta_key="' . $this->new_prefix . 'user_level" WHERE meta_key="' . $this->old_base_prefix . 'user_level";';
+                    if ($this->execute_sql($update_query, $sub_task) === false)
+                    {
+                        $this->log->WriteLog($this->db_method->get_last_error(), 'notice');
+                    }
+
+                    $update_query = 'UPDATE ' . $table_name . ' SET meta_key="' . $this->new_prefix . 'user-settings" WHERE meta_key="' . $this->old_base_prefix . 'user-settings";';
+                    if ($this->execute_sql($update_query, $sub_task) === false)
+                    {
+                        $this->log->WriteLog($this->db_method->get_last_error(), 'notice');
+                    }
+
+                    $update_query = 'UPDATE ' . $table_name . ' SET meta_key="' . $this->new_prefix . 'user-settings-time" WHERE meta_key="' . $this->old_base_prefix . 'user-settings-time";';
+                    if ($this->execute_sql($update_query, $sub_task) === false)
+                    {
+                        $this->log->WriteLog($this->db_method->get_last_error(), 'notice');
+                    }
+
+                    $update_query = 'UPDATE ' . $table_name . ' SET meta_key="' . $this->new_prefix . 'dashboard_quick_press_last_post_id" WHERE meta_key="' . $this->old_base_prefix . 'dashboard_quick_press_last_post_id";';
+                    if ($this->execute_sql($update_query, $sub_task) === false)
+                    {
+                        $this->log->WriteLog($this->db_method->get_last_error(), 'notice');
+                    }
                 }
 
                 $ret['result']='success';

@@ -162,13 +162,24 @@ class Mainwp_WPvivid_Extension_White_Label
             $show_sidebar= empty($white_label_setting['show_sidebar']) ? 'show' : $white_label_setting['show_sidebar'];
             if($show_sidebar=='show')
             {
-                $show='checked';
-                $hide='';
+                $show_sidebar_link='checked';
+                $hide_sidebar_link='';
             }
             else
             {
-                $show='';
-                $hide='checked';
+                $show_sidebar_link='';
+                $hide_sidebar_link='checked';
+            }
+            $show_submit_ticket=empty($white_label_setting['show_submit_ticket']) ? 'show' : $white_label_setting['show_submit_ticket'];
+            if($show_submit_ticket=='show')
+            {
+                $show_submit_ticket_link='checked';
+                $hide_submit_ticket_link='';
+            }
+            else
+            {
+                $show_submit_ticket_link='';
+                $hide_submit_ticket_link='checked';
             }
             ?>
             <div style="margin: 10px;">
@@ -243,13 +254,24 @@ class Mainwp_WPvivid_Extension_White_Label
                         <div class="mwp-wpvivid-block-bottom-space"><strong><?php _e('Documentation Links', 'wpvivid'); ?></strong></div>
                         <div class="mwp-wpvivid-block-bottom-space">
                             <label class="wpvivid-radio" style="padding-right:1em;">
-                                <input type="radio" option="mwp_white_label_setting" name="show_sidebar" value="show" <?php esc_attr_e($show); ?> />Show links
+                                <input type="radio" option="mwp_white_label_setting" name="show_sidebar" value="show" <?php esc_attr_e($show_sidebar_link); ?> />Show links
                             </label>
                             <label class="wpvivid-radio" style="padding-right:1em;">
-                                <input type="radio" option="mwp_white_label_setting" name="show_sidebar" value="hide" <?php esc_attr_e($hide); ?> />Hide Links
+                                <input type="radio" option="mwp_white_label_setting" name="show_sidebar" value="hide" <?php esc_attr_e($hide_sidebar_link); ?> />Hide Links
                             </label>
                         </div>
                         <div class="mwp-wpvivid-block-bottom-space"><?php _e('Show or hide links to WPvivid documentation and support in the sidebar.'); ?></div>
+
+                        <div class="mwp-wpvivid-block-bottom-space"><strong><?php _e('Submit A Ticket Link', 'wpvivid'); ?></strong></div>
+                        <div class="mwp-wpvivid-block-bottom-space">
+                            <label class="wpvivid-radio" style="padding-right:1em;">
+                                <input type="radio" option="mwp_white_label_setting" name="show_submit_ticket" value="show" <?php esc_attr_e($show_submit_ticket_link); ?> />Show the link
+                            </label>
+                            <label class="wpvivid-radio" style="padding-right:1em;">
+                                <input type="radio" option="mwp_white_label_setting" name="show_submit_ticket" value="hide" <?php esc_attr_e($hide_submit_ticket_link); ?> />Hide the link
+                            </label>
+                        </div>
+                        <div class="mwp-wpvivid-block-bottom-space"><?php _e('Show or hide the Submit A Ticket link in the sidebar.', 'wpvivid'); ?></div>
 
                         <div class="mwp-wpvivid-block-bottom-space"><strong><?php _e('White Label Settings Access URL', 'wpvivid'); ?></strong></div>
                         <div class="mwp-wpvivid-block-bottom-space">

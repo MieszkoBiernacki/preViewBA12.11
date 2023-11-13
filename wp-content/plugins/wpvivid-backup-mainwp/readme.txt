@@ -2,9 +2,9 @@
 Contributors: wpvivid
 Tags: WPvivid backup, MainWP extension, backup, auto backup, cloud backup 
 Requires at least: 4.5
-Tested up to: 6.2.2
+Tested up to: 6.4.1
 Requires PHP: 5.3
-Stable tag: 0.9.31
+Stable tag: 0.9.32
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -47,6 +47,11 @@ See the [get started guide](https://wpvivid.com/wpvivid-backup-for-mainwp).
 3. Set WPvivid Backup Plugin settings for all child sites
 
 == Changelog ==
+= 0.9.32 =
+- Added WebDav and NextCloud cloud options.
+- Fixed some bugs in the plugin code.
+- Optimized the plugin code.
+- Successfully tested with WordPress 6.4.1.
 = 0.9.31 =
 - Fixed: License activation would fail when phpinfo is disabled on web hosting server.
 - Fixed some PHP warnings.

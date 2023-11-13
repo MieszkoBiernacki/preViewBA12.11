@@ -1119,7 +1119,21 @@ class Mainwp_WPvivid_Extension_BackupPage
                     }
                     $post_data['backup']['custom_dirs'] = $json['custom_dirs'];
                 }
-                $post_data['mwp_action']='wpvivid_prepare_backup_addon_mainwp';
+
+                $post_data['backup']['exclude_files'] = $json['exclude_files'];
+                $post_data['backup']['exclude_file_type'] = $json['exclude_file_type'];
+                if(isset($json['remote_id_select'])){
+                    $post_data['backup']['remote_id_select'] = $json['remote_id_select'];
+                }
+                $child_site_pro_version = $mainwp_wpvivid_extension_activator->get_current_version($site_id);
+                if(version_compare($child_site_pro_version,'2.2.22','>='))
+                {
+                    $post_data['mwp_action']='wpvivid_prepare_backup_addon_mainwp_ex';
+                }
+                else
+                {
+                    $post_data['mwp_action']='wpvivid_prepare_backup_addon_mainwp';
+                }
                 $information = apply_filters('mainwp_fetchurlauthed', $mainwp_wpvivid_extension_activator->childFile, $mainwp_wpvivid_extension_activator->childKey, $site_id, 'wpvivid_backuprestore', $post_data);
                 if (isset($information['error'])) {
                     $ret['result'] = 'failed';
@@ -1148,7 +1162,15 @@ class Mainwp_WPvivid_Extension_BackupPage
                 isset($_POST['task_id']) && !empty($_POST['task_id']) && is_string($_POST['task_id'])) {
                 $site_id = sanitize_text_field($_POST['site_id']);
                 $post_data['task_id'] = sanitize_key($_POST['task_id']);
-                $post_data['mwp_action'] = 'wpvivid_backup_now_addon_mainwp';
+                $child_site_pro_version = $mainwp_wpvivid_extension_activator->get_current_version($site_id);
+                if(version_compare($child_site_pro_version,'2.2.22','>='))
+                {
+                    $post_data['mwp_action'] = 'wpvivid_backup_now_addon_mainwp_ex';
+                }
+                else
+                {
+                    $post_data['mwp_action'] = 'wpvivid_backup_now_addon_mainwp';
+                }
                 $information = apply_filters('mainwp_fetchurlauthed', $mainwp_wpvivid_extension_activator->childFile, $mainwp_wpvivid_extension_activator->childKey, $site_id, 'wpvivid_backuprestore', $post_data);
                 if (isset($information['error'])) {
                     $ret['result'] = 'failed';
@@ -1175,13 +1197,28 @@ class Mainwp_WPvivid_Extension_BackupPage
         try {
             if(isset($_POST['site_id']) && !empty($_POST['site_id']) && is_string($_POST['site_id'])){
                 $site_id = sanitize_text_field($_POST['site_id']);
-                $post_data['mwp_action'] = 'wpvivid_list_tasks_addon_mainwp';
+                $child_site_pro_version = $mainwp_wpvivid_extension_activator->get_current_version($site_id);
+                if(version_compare($child_site_pro_version,'2.2.22','>='))
+                {
+                    $post_data['mwp_action'] = 'wpvivid_list_tasks_addon_mainwp_ex';
+                }
+                else
+                {
+                    $post_data['mwp_action'] = 'wpvivid_list_tasks_addon_mainwp';
+                }
                 $information = apply_filters('mainwp_fetchurlauthed', $mainwp_wpvivid_extension_activator->childFile, $mainwp_wpvivid_extension_activator->childKey, $site_id, 'wpvivid_backuprestore', $post_data);
                 if (isset($information['error'])) {
                     $ret['result'] = 'failed';
                     $ret['error'] = $information['error'];
                 } else {
-                    $ret = Mainwp_WPvivid_Extension_Subpage::output_backup_status_addon($site_id, $information);
+                    if(version_compare($child_site_pro_version,'2.2.22','>='))
+                    {
+                        $ret = Mainwp_WPvivid_Extension_Subpage::output_backup_status_addon_ex($site_id, $information);
+                    }
+                    else
+                    {
+                        $ret = Mainwp_WPvivid_Extension_Subpage::output_backup_status_addon($site_id, $information);
+                    }
                 }
                 echo json_encode($ret);
             }
@@ -2251,7 +2288,7 @@ class Mainwp_WPvivid_Extension_BackupPage
                     }
                 });
 
-                jQuery('input:radio[option=mwp_backup][name=backup_to]').each(function ()
+                jQuery('input:radio[option=mwp_backup][name=mwp_backup_to]').each(function ()
                 {
                     if (jQuery(this).prop('checked'))
                     {

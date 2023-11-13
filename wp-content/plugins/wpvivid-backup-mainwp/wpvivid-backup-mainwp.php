@@ -4,7 +4,7 @@
  * Plugin Name: WPvivid Backup MainWP
  * Plugin URI: https://mainwp.com/
  * Description: WPvivid Backup for MainWP enables you to create and download backups of a specific child site, set backup schedules, connect with your remote storage and set settings for all of your child sites directly from your MainWP dashboard.
- * Version: 0.9.31
+ * Version: 0.9.32
  * Author: WPvivid Team
  * Author URI: https://wpvivid.com
  * License: GPL-3.0+
@@ -23,7 +23,7 @@ class Mainwp_WPvivid_Extension_Activator
 {
     protected $plugin_handle = 'wpvivid-backup-mainwp';
     protected $product_id = 'WPvivid Backup MainWP';
-    protected $version = '0.9.31';
+    protected $version = '0.9.32';
     protected $childEnabled;
     public $childKey;
     public $childFile;
@@ -500,14 +500,14 @@ class Mainwp_WPvivid_Extension_Activator
         $html = '';
         if($notice_type)
         {
-            $html .= __('<div class="notice notice-success is-dismissible inline" style="margin: 0; padding-top: 10px; margin-bottom: 10px;"><p>'.$message.'</p>
+            $html .= __('<div class="notice notice-success is-dismissible inline" style="margin: 0; padding-top: 10px; margin-bottom: 10px; margin-left: 0px !important;"><p>'.$message.'</p>
                                     <button type="button" class="notice-dismiss" onclick="mwp_click_dismiss_notice(this);">
                                     <span class="screen-reader-text">Dismiss this notice.</span>
                                     </button>
                                     </div>');
         }
         else{
-            $html .= __('<div class="notice notice-error inline" style="margin: 0; padding: 10px; margin-bottom: 10px;"><p>' . $message . '</p></div>');
+            $html .= __('<div class="notice notice-error inline" style="margin: 0; padding: 10px; margin-bottom: 10px; margin-left: 0px !important;"><p>' . $message . '</p></div>');
         }
         return $html;
     }

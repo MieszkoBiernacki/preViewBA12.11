@@ -452,14 +452,14 @@ function mwp_wpvivid_add_notice(notice_action, notice_type, notice_msg){
             mwp_wpvivid_clear_notice('mwp_wpvivid_backup_notice');
             jQuery('#mwp_wpvivid_backup_notice').show();
             var success_msg = "backup task have been completed.";
-            div = "<div class='notice notice-success is-dismissible inline' style='margin: 0; padding-top: 10px;'><p>" + success_msg + "</p>" +
+            div = "<div class='notice notice-success is-dismissible inline' style='margin: 0; padding-top: 10px; margin-left: 0px !important;'><p>" + success_msg + "</p>" +
                 "<button type='button' class='notice-dismiss' onclick='mwp_click_dismiss_notice(this);'>" +
                 "<span class='screen-reader-text'>Dismiss this notice.</span>" +
                 "</button>" +
                 "</div>";
         }
         else if(notice_type === "Info"){
-            div = "<div class='notice notice-info is-dismissible inline' style='margin: 0; padding-top: 10px;'><p>" + notice_msg + "</p>" +
+            div = "<div class='notice notice-info is-dismissible inline' style='margin: 0; padding-top: 10px; margin-left: 0px !important;'><p>" + notice_msg + "</p>" +
                 "<button type='button' class='notice-dismiss' onclick='mwp_click_dismiss_notice(this);'>" +
                 "<span class='screen-reader-text'>Dismiss this notice.</span>" +
                 "</button>" +

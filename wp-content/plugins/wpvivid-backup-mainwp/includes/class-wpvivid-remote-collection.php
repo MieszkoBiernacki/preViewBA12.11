@@ -10,6 +10,8 @@ require_once MAINWP_WPVIVID_EXTENSION_PLUGIN_DIR . '/includes/customclass/class-
 require_once MAINWP_WPVIVID_EXTENSION_PLUGIN_DIR . '/includes/customclass/class-wpvivid-wasabi.php';
 require_once MAINWP_WPVIVID_EXTENSION_PLUGIN_DIR . '/includes/customclass/class-wpvivid-b2.php';
 require_once MAINWP_WPVIVID_EXTENSION_PLUGIN_DIR . '/includes/customclass/class-wpvivid-pcloud.php';
+require_once MAINWP_WPVIVID_EXTENSION_PLUGIN_DIR . '/includes/customclass/class-wpvivid-webdav.php';
+require_once MAINWP_WPVIVID_EXTENSION_PLUGIN_DIR . '/includes/customclass/class-wpvivid-nextcloud.php';
 
 class Mainwp_WPvivid_Remote_collection
 {
@@ -78,6 +80,8 @@ class Mainwp_WPvivid_Remote_collection
         $remote_collection['wasabi']='Mainwp_Wpvivid_WasabiS3';
         $remote_collection['b2']='Mainwp_WPvivid_B2Class';
         $remote_collection['pcloud']='Mainwp_WPvivid_pCloud';
+        $remote_collection['webdav']='Mainwp_WPvivid_WebDavClass';
+        $remote_collection['nextcloud']='Mainwp_WPvivid_NextcloudClass';
         return $remote_collection;
     }
 

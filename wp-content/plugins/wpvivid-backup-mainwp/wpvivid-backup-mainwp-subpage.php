@@ -71,14 +71,21 @@ class Mainwp_WPvivid_Extension_Subpage
 
                 function mwp_wpvivid_click_remote_page() {
                     <?php
-                    $white_label_setting = Mainwp_WPvivid_Extension_DB_Option::get_instance()->wpvivid_get_option(sanitize_text_field($_GET['id']), 'white_label_setting', array());
-                    if(!$white_label_setting){
-                        $location = 'admin.php?page=wpvivid-remote';
+                    if($check_pro)
+                    {
+                        $white_label_setting = Mainwp_WPvivid_Extension_DB_Option::get_instance()->wpvivid_get_option(sanitize_text_field($_GET['id']), 'white_label_setting', array());
+                        if(!$white_label_setting){
+                            $location = 'admin.php?page=wpvivid-remote';
+                        }
+                        else{
+                            $slug = $white_label_setting['white_label_slug'];
+                            $slug_page = strtolower($white_label_setting['white_label_slug']);
+                            $location = 'admin.php?page=wpvivid-remote';
+                        }
                     }
-                    else{
-                        $slug = $white_label_setting['white_label_slug'];
-                        $slug_page = strtolower($white_label_setting['white_label_slug']);
-                        $location = 'admin.php?page=wpvivid-remote';
+                    else
+                    {
+                        $location = 'admin.php?page=WPvivid';
                     }
                     ?>
                     var location = "admin.php?page=SiteOpen&newWindow=yes&websiteid=<?php esc_html_e($_GET['id']); ?>&location=<?php esc_html_e(base64_encode($location)); ?>&_opennonce=<?php echo wp_create_nonce( 'mainwp-admin-nonce' ); ?>";
@@ -394,6 +401,86 @@ class Mainwp_WPvivid_Extension_Subpage
         return $html;
     }
 
+    static public function output_backup_status_addon_ex($site_id, $information){
+        global $mainwp_wpvivid_extension_activator;
+        $tasks = $information['tasks'];
+        $ret['result']='success';
+        $ret['progress_html']=false;
+        $ret['success_notice_html'] =false;
+        $ret['error_notice_html'] =false;
+        $ret['need_update']=false;
+        $ret['last_msg_html']=false;
+        $ret['running_backup_taskid']='';
+        $ret['wait_resume']=false;
+        $ret['next_resume_time']=false;
+        $ret['need_refresh_remote']=false;
+        $ret['backup_finish_info']=false;
+        $ret['task_no_response']=false;
+
+        foreach ($tasks as $task_id => $task) {
+            if(!isset($task['id']))
+            {
+                continue;
+            }
+
+            $ret['task_id']=$task['id'];
+            $ret['need_update']=true;
+
+            if ($task['status']['str'] === 'ready' || $task['status']['str'] === 'running' || $task['status']['str'] === 'wait_resume' || $task['status']['str'] === 'no_responds') {
+                $ret['running_backup_taskid']=$task_id;
+
+                if($task['status']['str']==='wait_resume') {
+                    $ret['wait_resume']=true;
+                    $ret['next_resume_time']=$task['data']['next_resume_time'];
+                }
+
+                $ret['progress_html'] = '<div class="mwp-action-progress-bar">
+                            <div class="mwp-action-progress-bar-percent" style="height:24px;width:' . esc_attr($task['task_info']['backup_percent']) . '"></div>
+                        </div>
+                        <div style="float: left;">
+                            <div class="mwp-backup-basic-info"><span class="mwp-wpvivid-span">' . __('Total Size:', 'mainwp-wpvivid-extension') . '</span><span class="mwp-wpvivid-span">' . __($task['task_info']['total']) . '</span></div>
+                            <div class="mwp-backup-basic-info"><span class="mwp-wpvivid-span">' . __('Uploaded:', 'mainwp-wpvivid-extension') . '</span><span class="mwp-wpvivid-span">' . __($task['task_info']['upload']) . '</span></div>
+                            <div class="mwp-backup-basic-info"><span class="mwp-wpvivid-span">' . __('Speed:', 'mainwp-wpvivid-extension') . '</span><span class="mwp-wpvivid-span">' . __($task['task_info']['speed']) . '</span></div>
+                        </div>
+                        <div style="float: left;">
+                            <div class="mwp-backup-basic-info"><span class="mwp-wpvivid-span">' . __('Network Connection:', 'mainwp-wpvivid-extension') . '</span><span class="mwp-wpvivid-span">' . __($task['task_info']['network_connection']) . '</span></div>
+                        </div>
+                        <div style="clear:both;"></div>
+                        <div style="padding:10px; float: left; width:100%;"><p id="mwp_wpvivid_current_doing">' . __($task['task_info']['descript'], 'mainwp-wpvivid-extension') . '</p></div>
+                        <div style="clear: both;"></div>
+                        <div>
+                            <div class="mwp-backup-log-btn" style="float: left;"><input class="ui green mini button" id="mwp_wpvivid_backup_cancel_btn_addon" type="button" value="' . esc_attr('Cancel') . '" style="' . esc_attr($task['task_info']['css_btn_cancel']) . '" /></div>
+                            <div style="clear: both;"></div>
+                        </div>
+                        <div style="clear: both;"></div>';
+            }
+            else if($task['status']['str'] === 'completed'){
+                $options[$task_id]['task_id'] = $task_id;
+                $options[$task_id]['backup_time'] = $task['status']['start_time'];
+                $options[$task_id]['status'] = 'Succeeded';
+                $mainwp_wpvivid_extension_activator->set_backup_report($site_id, $options);
+            }
+            else if($task['status']['str'] === 'error'){
+                $options[$task_id]['task_id'] = $task_id;
+                $options[$task_id]['backup_time'] = $task['status']['start_time'];
+                $options[$task_id]['status'] = 'Failed, '.$task['status']['error'];
+                $mainwp_wpvivid_extension_activator->set_backup_report($site_id, $options);
+            }
+        }
+        if($information['success_notice_html'] !== false){
+            $ret['success_notice_html'] = __('<div class="notice notice-success is-dismissible inline" style="margin: 0; padding-top: 10px; margin-left: 0px !important;"><p>Backup task have been completed.</p>
+                                    <button type="button" class="notice-dismiss" onclick="mwp_click_dismiss_notice(this);">
+                                    <span class="screen-reader-text">Dismiss this notice.</span>
+                                    </button>
+                                    </div>');
+        }
+        if($information['error_notice_html'] !== false){
+            $ret['error_notice_html'] = __('<div class="notice notice-error inline" style="margin: 0; padding: 10px; margin-left: 0px !important;"><p>'.$information['error_notice_html'].'</p></div>');
+        }
+        $ret['need_refresh_remote'] = $information['need_refresh_remote'];
+        return $ret;
+    }
+
     static public function output_backup_status_addon($site_id, $information){
         global $mainwp_wpvivid_extension_activator;
         $tasks = $information['tasks'];
@@ -455,14 +542,14 @@ class Mainwp_WPvivid_Extension_Subpage
             }
         }
         if($information['success_notice_html'] !== false){
-            $ret['success_notice_html'] = __('<div class="notice notice-success is-dismissible inline" style="margin: 0; padding-top: 10px;"><p>Backup task have been completed.</p>
+            $ret['success_notice_html'] = __('<div class="notice notice-success is-dismissible inline" style="margin: 0; padding-top: 10px; margin-left: 0px !important;"><p>Backup task have been completed.</p>
                                     <button type="button" class="notice-dismiss" onclick="mwp_click_dismiss_notice(this);">
                                     <span class="screen-reader-text">Dismiss this notice.</span>
                                     </button>
                                     </div>');
         }
         if($information['error_notice_html'] !== false){
-            $ret['error_notice_html'] = __('<div class="notice notice-error inline" style="margin: 0; padding: 10px;"><p>'.$information['error_notice_html'].'</p></div>');
+            $ret['error_notice_html'] = __('<div class="notice notice-error inline" style="margin: 0; padding: 10px; margin-left: 0px !important;"><p>'.$information['error_notice_html'].'</p></div>');
         }
         $ret['need_refresh_remote'] = $information['need_refresh_remote'];
         return $ret;

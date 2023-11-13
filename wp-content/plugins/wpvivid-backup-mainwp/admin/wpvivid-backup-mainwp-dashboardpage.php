@@ -86,7 +86,16 @@ class Mainwp_WPvivid_Extension_DashboardPage
         try{
             if(isset($_POST['wp_id']) && isset($_POST['isGlobalSync'])){
                 MainWP\Dashboard\MainWP_Updates_Overview::dismiss_sync_errors( false );
-                MainWP\Dashboard\MainWP_Updates_Overview::sync_site();
+                $website = null;
+                $wp_id   = isset( $_POST['wp_id'] ) ? intval( $_POST['wp_id'] ) : false;
+                if ( $wp_id )
+                {
+                    $website = MainWP\Dashboard\MainWP_DB::instance()->get_website_by_id( $wp_id );
+                }
+                if ( $website != null )
+                {
+                    MainWP\Dashboard\MainWP_Sync::sync_website( $website );
+                }
             }
         }
         catch (Exception $error) {

@@ -1,0 +1,141 @@
+Log created: 2023-11-12 20:14:44
+Type: backup
+[2023-11-12 20:14:46][notice]Start backing up.
+[2023-11-12 20:14:46][notice]server info fcgi:Off max execution time: 300 wp version:6.4.1 php version:8.0.10 db version:5.5.5 php ini:safe_mode: memory_limit:256M memory_get_usage:104,40 MB memory_get_peak_usage:106,18 MB extensions:PDO enabled curl enabled zlib enabled   is_multisite:0
+[2023-11-12 20:14:46][notice]Prepare to backup backup_db files.
+[2023-11-12 20:14:46][notice]Start exporting database.
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_ff_scheduled_actions
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_fluentform_entry_details
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_fluentform_form_analytics
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_fluentform_form_meta
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_fluentform_forms
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_fluentform_logs
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_fluentform_submission_meta
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_fluentform_submissions
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_mainwp_wpvivid
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_mainwp_wpvivid_global
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_mainwp_wpvivid_global_options
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_mainwp_wpvividmeta
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_nextend2_smartslider3_generators
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_wpforms_tasks_meta
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_wpmailsmtp_debug_events
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_wpmailsmtp_tasks_meta
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_actionscheduler_claims
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_actionscheduler_groups
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_duplicator_packages
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_e_events
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_links
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_nextend2_image_storage
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_nextend2_smartslider3_sliders_xref
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_term_relationships
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_actionscheduler_logs
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_commentmeta
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_term_taxonomy
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_termmeta
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_terms
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_usermeta
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_users
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_wpforms_payment_meta
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_comments
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_nextend2_smartslider3_sliders
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_actionscheduler_actions
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_wpforms_payments
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_nextend2_section_storage
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_nextend2_smartslider3_slides
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_options
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_posts
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_simply_static_pages
+[2023-11-12 20:14:46][notice]Preparing to dump table wp_postmeta
+[2023-11-12 20:14:47][notice]Exporting database finished.
+[2023-11-12 20:14:47][notice]Start compressing database
+[2023-11-12 20:14:47][notice]Prepare to zip file. file: localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_db.sql
+[2023-11-12 20:14:48][notice]Adding zip files completed.localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_db.part001.zip, filesize: 3,23 MB
+[2023-11-12 20:14:48][notice]Compressing database completed
+[2023-11-12 20:14:48][notice]Backing up backup_db completed.
+[2023-11-12 20:14:48][notice]Prepare to backup backup_themes files.
+[2023-11-12 20:14:49][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_themes.part001.zip index:500
+[2023-11-12 20:14:50][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_themes.part001.zip success. index:500 file size:3,25 MB
+[2023-11-12 20:14:50][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_themes.part001.zip index:1000
+[2023-11-12 20:14:51][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_themes.part001.zip success. index:1000 file size:13,09 MB
+[2023-11-12 20:14:51][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_themes.part001.zip index:1500
+[2023-11-12 20:14:52][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_themes.part001.zip success. index:1500 file size:18,87 MB
+[2023-11-12 20:14:52][notice]Backing up backup_themes completed.
+[2023-11-12 20:14:52][notice]Prepare to backup backup_plugin files.
+[2023-11-12 20:14:57][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip index:500
+[2023-11-12 20:14:57][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip success. index:500 file size:3,15 MB
+[2023-11-12 20:14:57][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip index:1000
+[2023-11-12 20:14:58][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip success. index:1000 file size:6,01 MB
+[2023-11-12 20:14:58][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip index:1500
+[2023-11-12 20:14:59][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip success. index:1500 file size:7,08 MB
+[2023-11-12 20:14:59][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip index:2000
+[2023-11-12 20:15:00][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip success. index:2000 file size:11,12 MB
+[2023-11-12 20:15:00][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip index:2500
+[2023-11-12 20:15:01][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip success. index:2500 file size:16,12 MB
+[2023-11-12 20:15:01][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip index:3000
+[2023-11-12 20:15:02][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip success. index:3000 file size:17,68 MB
+[2023-11-12 20:15:02][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip index:3500
+[2023-11-12 20:15:04][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip success. index:3500 file size:23,42 MB
+[2023-11-12 20:15:04][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip index:4000
+[2023-11-12 20:15:05][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip success. index:4000 file size:27,50 MB
+[2023-11-12 20:15:05][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip index:4500
+[2023-11-12 20:15:07][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip success. index:4500 file size:29,13 MB
+[2023-11-12 20:15:07][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip index:5000
+[2023-11-12 20:15:08][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip success. index:5000 file size:34,09 MB
+[2023-11-12 20:15:08][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip index:5500
+[2023-11-12 20:15:10][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip success. index:5500 file size:36,29 MB
+[2023-11-12 20:15:10][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip index:6000
+[2023-11-12 20:15:10][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip success. index:6000 file size:37,02 MB
+[2023-11-12 20:15:10][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip index:6500
+[2023-11-12 20:15:12][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip success. index:6500 file size:38,67 MB
+[2023-11-12 20:15:12][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip index:7000
+[2023-11-12 20:15:12][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip success. index:7000 file size:41,53 MB
+[2023-11-12 20:15:12][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip index:7500
+[2023-11-12 20:15:14][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip success. index:7500 file size:43,00 MB
+[2023-11-12 20:15:14][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip index:8000
+[2023-11-12 20:15:15][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip success. index:8000 file size:48,60 MB
+[2023-11-12 20:15:15][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip index:8500
+[2023-11-12 20:15:16][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip success. index:8500 file size:49,54 MB
+[2023-11-12 20:15:16][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip index:9000
+[2023-11-12 20:15:18][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip success. index:9000 file size:50,84 MB
+[2023-11-12 20:15:18][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip index:9500
+[2023-11-12 20:15:18][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip success. index:9500 file size:51,66 MB
+[2023-11-12 20:15:18][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip index:10000
+[2023-11-12 20:15:19][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.part001.zip success. index:10000 file size:52,16 MB
+[2023-11-12 20:15:20][notice]Backing up backup_plugin completed.
+[2023-11-12 20:15:20][notice]Prepare to backup backup_uploads files.
+[2023-11-12 20:15:20][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_uploads.part001.zip index:500
+[2023-11-12 20:15:20][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_uploads.part001.zip success. index:500 file size:11,65 MB
+[2023-11-12 20:15:20][notice]Backing up backup_uploads completed.
+[2023-11-12 20:15:20][notice]Prepare to backup backup_content files.
+[2023-11-12 20:15:20][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_content.part001.zip index:500
+[2023-11-12 20:15:21][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_content.part001.zip success. index:500 file size:1,37 MB
+[2023-11-12 20:15:21][notice]Backing up backup_content completed.
+[2023-11-12 20:15:21][notice]Prepare to backup backup_core files.
+[2023-11-12 20:15:22][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_core.part001.zip index:500
+[2023-11-12 20:15:23][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_core.part001.zip success. index:500 file size:2,28 MB
+[2023-11-12 20:15:23][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_core.part001.zip index:1000
+[2023-11-12 20:15:23][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_core.part001.zip success. index:1000 file size:2,83 MB
+[2023-11-12 20:15:23][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_core.part001.zip index:1500
+[2023-11-12 20:15:24][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_core.part001.zip success. index:1500 file size:4,09 MB
+[2023-11-12 20:15:24][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_core.part001.zip index:2000
+[2023-11-12 20:15:27][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_core.part001.zip success. index:2000 file size:10,31 MB
+[2023-11-12 20:15:27][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_core.part001.zip index:2500
+[2023-11-12 20:15:28][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_core.part001.zip success. index:2500 file size:13,22 MB
+[2023-11-12 20:15:28][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_core.part001.zip index:3000
+[2023-11-12 20:15:29][notice]Compressing zip file:localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_core.part001.zip success. index:3000 file size:13,70 MB
+[2023-11-12 20:15:29][notice]Backing up backup_core completed.
+[2023-11-12 20:15:29][notice]Prepare to backup backup_merge files.
+[2023-11-12 20:15:29][notice]Prepare to zip file. file: localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_db.zip
+[2023-11-12 20:15:29][notice]Adding zip files completed.localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_all.part001.zip, filesize: 2,31 MB
+[2023-11-12 20:15:29][notice]Prepare to zip file. file: localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_themes.zip
+[2023-11-12 20:15:29][notice]Adding zip files completed.localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_all.part001.zip, filesize: 20,92 MB
+[2023-11-12 20:15:29][notice]Prepare to zip file. file: localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_plugin.zip
+[2023-11-12 20:15:31][notice]Adding zip files completed.localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_all.part001.zip, filesize: 70,87 MB
+[2023-11-12 20:15:31][notice]Prepare to zip file. file: localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_uploads.zip
+[2023-11-12 20:15:32][notice]Adding zip files completed.localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_all.part001.zip, filesize: 82,50 MB
+[2023-11-12 20:15:32][notice]Prepare to zip file. file: localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_content.zip
+[2023-11-12 20:15:32][notice]Adding zip files completed.localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_all.part001.zip, filesize: 83,86 MB
+[2023-11-12 20:15:32][notice]Prepare to zip file. file: localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_core.zip
+[2023-11-12 20:15:32][notice]Adding zip files completed.localhost_preViewBA12.11_wpvivid-65512424cdf30_2023-11-12-20-14_backup_all.part001.zip, filesize: 97,17 MB
+[2023-11-12 20:15:33][notice]Backing up backup_merge completed.
+[2023-11-12 20:15:33][notice]Backup completed.

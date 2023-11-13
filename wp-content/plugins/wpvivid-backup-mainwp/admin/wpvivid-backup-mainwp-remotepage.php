@@ -1850,6 +1850,24 @@ class Mainwp_WPvivid_Extension_RemotePage
         <?php
     }
 
+    public function output_cloud_storage_webdav()
+    {
+        ?>
+        <div class="mwp-wpvivid-one-coloum mwp-wpvivid-workflow mwp-wpvivid-clear-float" style="margin: 10px 0;">
+            <?php do_action('mwp_wpvivid_add_storage_page_webdav_addon'); ?>
+        </div>
+        <?php
+    }
+
+    public function output_cloud_storage_nextcloud()
+    {
+        ?>
+        <div class="mwp-wpvivid-one-coloum mwp-wpvivid-workflow mwp-wpvivid-clear-float" style="margin: 10px 0;">
+            <?php do_action('mwp_wpvivid_add_storage_page_nextcloud_addon'); ?>
+        </div>
+        <?php
+    }
+
     public function output_remote_page_addon($global){
         ?>
         <div style="margin-top: 10px;">
@@ -1944,6 +1962,16 @@ class Mainwp_WPvivid_Extension_RemotePage
                 $tabs['mwp_wpvivid_cloud_storage_b2']['slug']='mwp_wpvivid_cloud_storage_b2';
                 $tabs['mwp_wpvivid_cloud_storage_b2']['callback']=array($this, 'output_cloud_storage_b2');
                 $tabs['mwp_wpvivid_cloud_storage_b2']['args']=$args;
+
+                $tabs['mwp_wpvivid_cloud_storage_webdav']['title']='Webdav';
+                $tabs['mwp_wpvivid_cloud_storage_webdav']['slug']='mwp_wpvivid_cloud_storage_webdav';
+                $tabs['mwp_wpvivid_cloud_storage_webdav']['callback']=array($this, 'output_cloud_storage_webdav');
+                $tabs['mwp_wpvivid_cloud_storage_webdav']['args']=$args;
+
+                $tabs['mwp_wpvivid_cloud_storage_nextcloud']['title']='NextCloud';
+                $tabs['mwp_wpvivid_cloud_storage_nextcloud']['slug']='mwp_wpvivid_cloud_storage_nextcloud';
+                $tabs['mwp_wpvivid_cloud_storage_nextcloud']['callback']=array($this, 'output_cloud_storage_nextcloud');
+                $tabs['mwp_wpvivid_cloud_storage_nextcloud']['args']=$args;
 
                 foreach ($tabs as $key=>$tab)
                 {
